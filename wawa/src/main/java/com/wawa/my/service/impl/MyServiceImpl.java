@@ -6,7 +6,6 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.wawa.basic.helper.ConstantHelper;
 import com.wawa.basic.service.impl.BasicServiceImpl;
 import com.wawa.my.bean.Diary;
 import com.wawa.my.bean.Resource;
@@ -32,7 +31,7 @@ public class MyServiceImpl extends BasicServiceImpl implements MyService {
     }
 
     public void saveResource(Resource resource) throws Exception {
-        String sql = "insert into t_resource (userid, resourcename,resourcetype,description,createtime) values (:userid,:resourcename,:resourcetype,:description,now())";
+        String sql = "insert into t_resource (userid, resourcename,resourcetype,ispublic,description,createtime) values (:userid,:resourcename,:resourcetype,:ispublic,:description,now())";
         myDao.updateObject(sql, resource);
     }
 

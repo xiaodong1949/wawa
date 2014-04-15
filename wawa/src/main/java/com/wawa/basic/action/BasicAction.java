@@ -23,7 +23,7 @@ public class BasicAction {
 
     public User getUser() {
         User user = new User();
-        user.setId(1);
+        user.setId(7);
         return user;
     }
 

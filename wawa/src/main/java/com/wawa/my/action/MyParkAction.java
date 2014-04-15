@@ -3,7 +3,6 @@ package com.wawa.my.action;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -42,13 +41,13 @@ public class MyParkAction extends BasicAction {
 
         List<Resource> resourceList = myService.getMyResource(user.getId(),
                 ConstantHelper.RESOURCE_TYPE_PHOTO);
-        mav.addObject("resources", resourceList);
+        mav.addObject("imageList", resourceList);
         mav.setViewName("myImage");
         return mav;
     }
 
     @RequestMapping("/uploadMyResource.do")
-    public ModelAndView uploadMyAlbum(@RequestParam(required = false) String desc,
+    public ModelAndView uploadMyAlbum(@RequestParam(required = false) String desc,int resourcetype,boolean ispublic,
             HttpServletRequest request, HttpServletResponse response) throws Exception {
         User user = this.getUser();
         ModelAndView mav = new ModelAndView();
@@ -60,7 +59,7 @@ public class MyParkAction extends BasicAction {
             byte[] data = new byte[(int)size];
             InputStream input = file.getInputStream();
             input.read(data);
-            String filePath = "album" + File.separator + user.getId() + File.separator;
+            String filePath = "img" + File.separator + user.getId() + File.separator;
             File fileDir = new File(myappPath + filePath);
             if (!fileDir.exists()) {
                 fileDir.mkdirs();
@@ -73,12 +72,18 @@ public class MyParkAction extends BasicAction {
             outStream.write(data);
             outStream.close();
             input.close();
-//            myService.savePhoto(user.getId(), filePath + file.getOriginalFilename(), desc);
+            Resource rs = new Resource();
+            rs.setUserid(user.getId());
+            rs.setResourcename(filePath + file.getOriginalFilename());
+            rs.setDescription(desc);
+            rs.setIspublic(ispublic?1:0);
+            rs.setResourcetype(ConstantHelper.RESOURCE_TYPE_PHOTO);
+            myService.saveResource(rs);
         } catch(Exception e) {
             logger.error(e);
             throw new Exception(e);
         }
-        mav.setViewName("redirect:/initMyAlbum.do");
+        mav.setViewName("redirect:/initMyImage.do");
         return mav;
     }
 }
