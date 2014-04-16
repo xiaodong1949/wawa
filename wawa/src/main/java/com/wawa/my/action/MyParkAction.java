@@ -3,6 +3,7 @@ package com.wawa.my.action;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
+import java.util.Calendar;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -65,7 +66,9 @@ public class MyParkAction extends BasicAction {
             if (!fileDir.exists()) {
                 fileDir.mkdirs();
             }
-            File outFile = new File(myappPath + filePath + file.getOriginalFilename());
+            String sname = file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf("."));
+            String newFilename = String.valueOf(Calendar.getInstance().getTimeInMillis())+sname;
+            File outFile = new File(myappPath + filePath + newFilename);
             if (!outFile.exists()) {
                 outFile.createNewFile();
             }
@@ -75,7 +78,7 @@ public class MyParkAction extends BasicAction {
             input.close();
             Resource rs = new Resource();
             rs.setUserid(user.getId());
-            rs.setResourcename(filePath + file.getOriginalFilename());
+            rs.setResourcename(filePath + newFilename);
             rs.setDescription(desc);
             rs.setIspublic(ispublic ? 1 : 0);
             rs.setResourcetype(ConstantHelper.RESOURCE_TYPE_PHOTO);

@@ -8,6 +8,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>index</title>
 <link href="css/bootstrap.css" rel="stylesheet">
+<link href="css/colorbox.css" rel="stylesheet"  />
+<link href="css/flat-ui.css" rel="stylesheet"  />
 <!--[if lt IE 9]>
       <script src="http://cdn.bootcss.com/html5shiv/3.7.0/html5shiv.min.js"></script>
       <script src="http://cdn.bootcss.com/respond.js/1.3.0/respond.min.js"></script>
@@ -69,29 +71,34 @@
 	</div>
 	<div class="row">
 		<div class="col-lg-3">
-			<video controls="controls" width="100%">
-				<source src="video/mov_bbb.ogg" type="video/ogg">
-				Your browser does not support the video tag.
-			</video>
+			<video class="video-js" controls
+              preload="auto" poster="../mages/video/poster.jpg" data-setup="{}">
+              <source src="http://sc.chinaz.com/yeshou.mp4" type='video/mp4'/>
+              <source src="http://sc.chinaz.com/oceans-clip.webm" type='video/webm'/>
+            </video>
 		</div>
 		<div class="col-lg-3">
-			<video controls="controls" width="100%">
-				<source src="video/1.mp4" type="video/mp4">
-				Your browser does not support the video tag.
-			</video>
+			<video class="video-js" controls
+              preload="auto" poster="../mages/video/poster.jpg" data-setup="{}">
+              <source src="http://sc.chinaz.com/yeshou.mp4" type='video/mp4'/>
+              <source src="http://sc.chinaz.com/oceans-clip.webm" type='video/webm'/>
+            </video>
 		</div>
 		<div class="col-lg-3">
-			<video controls="controls" width="100%">
-				<source src="video/2.mp4" type="video/mp4">
-				Your browser does not support the video tag.
-			</video>
+			<video class="video-js" controls
+              preload="auto" poster="../mages/video/poster.jpg" data-setup="{}">
+              <source src="http://sc.chinaz.com/yeshou.mp4" type='video/mp4'/>
+              <source src="http://sc.chinaz.com/oceans-clip.webm" type='video/webm'/>
+            </video>
 		</div>
 		<div class="col-lg-3">
-			<video controls="controls" width="100%">
-				<source src="video/3.mp4" type="video/mp4">
-				Your browser does not support the video tag.
-			</video>
+			<video class="video-js" controls
+              preload="auto" poster="../mages/video/poster.jpg" data-setup="{}">
+              <source src="http://sc.chinaz.com/yeshou.mp4" type='video/mp4'/>
+              <source src="http://sc.chinaz.com/oceans-clip.webm" type='video/webm'/>
+            </video>
 		</div>
+		
 	</div>
 	<!-- video end -->
 	</div>
@@ -159,5 +166,6 @@
 	</div>
 	<script type="text/javascript" src="js/jquery-1.10.2.js"></script>
 	<script type="text/javascript" src="js/bootstrap.js"></script>
+	<script type="text/javascript" src="js/video.js"></script>
 </body>
 </html>
