@@ -29,13 +29,15 @@ CREATE TABLE `t_answer` (
   PRIMARY KEY  (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+/*Data for the table `t_answer` */
+
 /*Table structure for table `t_baby` */
 
 DROP TABLE IF EXISTS `t_baby`;
 
 CREATE TABLE `t_baby` (
   `id` int(8) NOT NULL auto_increment COMMENT '主键ID',
-  `account` varchar(8) NOT NULL COMMENT '关联用户ID',
+  `userid` int(8) NOT NULL COMMENT '关联用户ID',
   `realname` varchar(16) default NULL COMMENT '真实姓名',
   `nickname` varchar(16) NOT NULL COMMENT '乳名',
   `sex` int(1) default NULL COMMENT '性别 1：男 2：女',
@@ -47,6 +49,25 @@ CREATE TABLE `t_baby` (
   `updatetime` timestamp NULL default NULL COMMENT '更新时间',
   PRIMARY KEY  (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+/*Data for the table `t_baby` */
+
+/*Table structure for table `t_diary` */
+
+DROP TABLE IF EXISTS `t_diary`;
+
+CREATE TABLE `t_diary` (
+  `id` int(8) NOT NULL auto_increment,
+  `userid` int(8) NOT NULL,
+  `title` varchar(512) default NULL,
+  `tag` varchar(32) default NULL,
+  `content` text,
+  `createtime` timestamp NOT NULL default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP,
+  `open` int(1) NOT NULL default '1' COMMENT '0:对外公开；1：好友；2：不公开',
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+/*Data for the table `t_diary` */
 
 /*Table structure for table `t_question` */
 
@@ -63,18 +84,28 @@ CREATE TABLE `t_question` (
   PRIMARY KEY  (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+/*Data for the table `t_question` */
+
 /*Table structure for table `t_resource` */
 
 DROP TABLE IF EXISTS `t_resource`;
 
 CREATE TABLE `t_resource` (
   `id` int(8) NOT NULL auto_increment COMMENT 'id',
-  `account` int(8) NOT NULL COMMENT '用户id',
-  `resourcename` varchar(32) NOT NULL COMMENT '用户资源路径',
+  `userid` int(8) NOT NULL COMMENT '用户id',
+  `resourcename` varchar(64) NOT NULL COMMENT '用户资源名称',
   `resourcetype` int(2) NOT NULL COMMENT '资源类型 1：图片 2:视频',
-  `createtime` varchar(64) NOT NULL COMMENT '创建时间',
+  `ispublic` int(1) NOT NULL default '1' COMMENT '是否公开 0：否 1:是',
+  `description` varchar(512) default NULL COMMENT '描述',
+  `createtime` timestamp NOT NULL default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP COMMENT '创建时间',
+  `praise` int(8) default '0' COMMENT '赞 个数',
+  `resourcest` int(1) default '1' COMMENT '0:删除 1：正常',
   PRIMARY KEY  (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
+
+/*Data for the table `t_resource` */
+
+insert  into `t_resource`(`id`,`userid`,`resourcename`,`resourcetype`,`ispublic`,`description`,`createtime`,`praise`,`resourcest`) values (4,1,'img/gallery/IMG_0228.JPG',1,1,'gggg','2014-04-15 14:56:14',4,1),(5,1,'img/gallery//IMG_0260.JPG',1,1,'','2014-03-03 11:08:12',0,1),(6,1,'album/1/IMG_0391.PNG',1,1,'','2014-03-03 10:52:55',0,1),(7,1,'album/1/IMG_0238.JPG',1,1,'','2014-03-03 10:53:10',0,1),(8,7,'img\\7\\2.jpg',1,0,'test','2014-04-16 15:54:13',0,0),(9,7,'img\\7\\2.jpg',1,0,'','2014-04-16 16:06:17',0,1),(13,7,'img\\7\\2.jpg',1,0,'','2014-04-16 17:11:45',0,1),(14,7,'img\\7\\2.jpg',1,0,'','2014-04-16 17:41:01',0,1);
 
 /*Table structure for table `t_user` */
 
@@ -99,7 +130,11 @@ CREATE TABLE `t_user` (
   `createtime` timestamp NULL default NULL COMMENT '注册时间',
   `updatetime` timestamp NULL default NULL COMMENT '更新时间',
   PRIMARY KEY  (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+
+/*Data for the table `t_user` */
+
+insert  into `t_user`(`id`,`account`,`password`,`acctp`,`realname`,`nickname`,`title`,`email`,`mobile`,`qq`,`weixin`,`weibotp`,`weibo`,`birthday`,`address`,`createtime`,`updatetime`) values (6,'中国','1',1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2013-12-12 13:56:06',NULL),(7,'真是姓名','aaa',1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2013-12-13 14:23:13',NULL);
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;

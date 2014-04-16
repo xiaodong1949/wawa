@@ -47,8 +47,9 @@ public class MyParkAction extends BasicAction {
     }
 
     @RequestMapping("/uploadMyResource.do")
-    public ModelAndView uploadMyAlbum(@RequestParam(required = false) String desc,int resourcetype,boolean ispublic,
-            HttpServletRequest request, HttpServletResponse response) throws Exception {
+    public ModelAndView uploadMyResource(@RequestParam(required = false) String desc,
+            int resourcetype, boolean ispublic, HttpServletRequest request,
+            HttpServletResponse response) throws Exception {
         User user = this.getUser();
         ModelAndView mav = new ModelAndView();
         String myappPath = request.getSession().getServletContext().getRealPath("/");
@@ -76,7 +77,7 @@ public class MyParkAction extends BasicAction {
             rs.setUserid(user.getId());
             rs.setResourcename(filePath + file.getOriginalFilename());
             rs.setDescription(desc);
-            rs.setIspublic(ispublic?1:0);
+            rs.setIspublic(ispublic ? 1 : 0);
             rs.setResourcetype(ConstantHelper.RESOURCE_TYPE_PHOTO);
             myService.saveResource(rs);
         } catch(Exception e) {
@@ -86,4 +87,18 @@ public class MyParkAction extends BasicAction {
         mav.setViewName("redirect:/initMyImage.do");
         return mav;
     }
+
+    @RequestMapping("/deleteMyResource.do")
+    public ModelAndView deleteMyResource(@RequestParam(required = false) int id,
+            HttpServletRequest request, HttpServletResponse response) throws Exception {
+        User user = this.getUser();
+        ModelAndView mav = new ModelAndView();
+        Resource rs = new Resource();
+        rs.setId(id);
+        rs.setUserid(user.getId());
+        myService.delResource(rs);
+        mav.setViewName("redirect:/initMyImage.do");
+        return mav;
+    }
+
 }

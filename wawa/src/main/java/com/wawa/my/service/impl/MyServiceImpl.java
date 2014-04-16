@@ -42,4 +42,9 @@ public class MyServiceImpl extends BasicServiceImpl implements MyService {
         List<Diary> listDiary = myDao.getObjectList(sql, paramMap, Diary.class);
         return listDiary;
     }
+
+    public void delResource(Resource rs) throws Exception {
+        String sql = "update t_resource set resourcest =0 where id=:id and userid=:userid ";
+        myDao.updateObject(sql, rs);
+    }
 }

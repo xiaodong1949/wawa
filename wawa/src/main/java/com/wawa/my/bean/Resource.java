@@ -23,6 +23,8 @@ public class Resource extends BasicBean {
     private int praise;
     
     private int ispublic;
+    
+    private int resourcest;
 
     public int getUserid() {
         return userid;
@@ -78,6 +80,14 @@ public class Resource extends BasicBean {
 
     public void setIspublic(int ispublic) {
         this.ispublic = ispublic;
+    }
+
+    public int getResourcest() {
+        return resourcest;
+    }
+
+    public void setResourcest(int resourcest) {
+        this.resourcest = resourcest;
     }
 
 }
