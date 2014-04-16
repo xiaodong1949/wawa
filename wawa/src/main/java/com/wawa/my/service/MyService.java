@@ -26,7 +26,7 @@ public interface MyService extends BasicService {
     public List<Resource> getMyResource(int userId, int resourceType) throws Exception;
 
     /** 
-     * 上传图片
+     * 上传资源
      * @param userId
      * @param fileName
      * @throws Exception 
@@ -45,4 +45,12 @@ public interface MyService extends BasicService {
      * @history: 
      */
     public List<Diary> getMyDiary(int userId) throws Exception;
+
+    /** 删除用户资源
+     * @param rs 
+     * @create: 2014年4月16日 下午3:25:00 
+     * @author: Yang Xiaodong
+     * @history: 
+     */
+    public void delResource(Resource rs) throws Exception;
 }
