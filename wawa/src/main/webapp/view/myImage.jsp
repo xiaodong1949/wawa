@@ -29,7 +29,7 @@
 			<form class="form-inline"
 				action="${pageContext.request.contextPath }/uploadMyResource.do?resourcetype=1"
 				method="post" enctype="multipart/form-data">
-				<input type="file" id="myPicFile" name="myPicFile">
+				<input type="file" id="myResourceFile" name="myResourceFile">
 				<div class="checkbox">
 					<label> <input id="ispublic" type="checkbox"> <spring:message
 							code="sys.text.public" />
@@ -55,7 +55,7 @@
 							<p class="text-right">${resource.createtime}</p>
 							<p class="text-center">${resource.description}</p>
 							<p >
-								<a href="${pageContext.request.contextPath }/deleteMyResource.do?id=${resource.id}" class="btn btn-danger btn-lg btn-block" role="button"><spring:message code="sys.button.delete" /></a>
+								<a href="${pageContext.request.contextPath }/deleteMyResource.do?id=${resource.id}&resourcetype=1" class="btn btn-danger btn-lg btn-block" role="button"><spring:message code="sys.button.delete" /></a>
 							</p>
 						</div>
 					</div>

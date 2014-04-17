@@ -71,13 +71,14 @@
 			<h3>video</h3>
 		</div>
 		<div class="row">
+		<c:forEach var="resource" items="${videoList}">
 			<div class="col-lg-3">
-				<video width="320" height="240" controls="controls">
-					<source src="${pageContext.request.contextPath}/view/a.ogg" type="video/ogg">
-					<source src="a.mp4" type="video/mp4">
+				<video  height="300" controls="controls">
+					<source src="${resource.resourcename}" type="video/ogg">
 					Your browser does not support the video tag.
 				</video>
 			</div>
+			</c:forEach>
 		</div>
 		<!-- video end -->
 	</div>

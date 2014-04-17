@@ -55,7 +55,7 @@ public class ManagerServiceImpl extends BasicServiceImpl implements
 	}
 
     public List<Resource> queryResourceOrderByTime(Resource rs) throws Exception {
-        String sql = "select * from  t_resource where resourcetype=:resourcetype and ispublic=:ispublic order by createtime desc limit 0,12";
+        String sql = "select * from  t_resource where resourcetype=:resourcetype and ispublic=:ispublic and resourcest = 1 order by createtime desc limit 0,12";
         Map<String, Object> paramMap = new HashMap<String, Object>();
         paramMap.put("ispublic", rs.getIspublic());
         paramMap.put("resourcetype", rs.getResourcetype());
