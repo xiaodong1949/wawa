@@ -1,8 +1,6 @@
 package com.wawa.basic.helper;
 
 import java.io.File;
-import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 
 /** 
@@ -12,7 +10,14 @@ import java.util.List;
  * @history:
  */
 public class ConvertVideo {
-    
+//    c:\program files\ffmpeg\bin\ffmpeg.exe" -i %1 -b 1500k -vcodec libx264 -vpre slow -vpre baseline                                            -g 30 -s 640x360 %1.mp4
+//    REM webm (VP8 / Vorbis)
+//    "c:\program files\ffmpeg\bin\ffmpeg.exe" -i %1 -b 1500k -vcodec libvpx                              -acodec libvorbis -ab 160000 -f webm    -g 30 -s 640x360 %1.webm
+//    REM ogv  (Theora / Vorbis)
+//    "c:\program files\ffmpeg\bin\ffmpeg.exe" -i %1 -b 1500k -vcodec libtheora                           -acodec libvorbis -ab 160000            -g 30 -s 640x360 %1.ogv
+//    REM jpeg (screenshot at 10 seconds)
+//    "c:\program files\ffmpeg\bin\ffmpeg.exe" -i %1 -ss 00:10 -vframes 1 -r 1 -s 640x360 -f image2 %1.jpg
+//    I save this as a batch file and then just drag and drop videos on it to get everything ready for HTML5.
     private final static String PATH = "e:/IMG_0091.MOV";
     public static void main(String[] args) {
            if(!checkfile(PATH)){
@@ -118,35 +123,16 @@ public class ConvertVideo {
            commend.add("D:\\ffmpeg\\bin\\ffmpeg.exe");
            commend.add("-i");
            commend.add(oldfilepath);
-//           commend.add("-ab");
-//           commend.add("64");
-//           commend.add("-acodec");
-//           commend.add("mp3");
-//           commend.add("-ac");
-//           commend.add("2");
-//           commend.add("-ar");
-//           commend.add("22050");
-//           commend.add("-b");
-//           commend.add("230");
-//           commend.add("-r");
-//           commend.add("24");
-//           commend.add("-y");
-           
-           
-//                                                              -s 640x360 %1.mp4
+
            commend.add("-b");
            commend.add("1500k");
            commend.add("-vcodec");
-           commend.add("libx264");
-           commend.add("-vpre");
-           commend.add("slow");
-           commend.add("-vpre");
-           commend.add("baseline");
+           commend.add("libtheora");
            commend.add("-g");
            commend.add("30");
            commend.add("-s");
-           commend.add("340*228");
-           commend.add("C:\\a.mp4");
+           commend.add("640x360");
+           commend.add("C:\\a.ogg");
            try {
                ProcessBuilder builder = new ProcessBuilder();
                builder.command(commend);
