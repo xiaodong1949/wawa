@@ -8,8 +8,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>index</title>
 <link href="css/bootstrap.css" rel="stylesheet">
-<link href="css/colorbox.css" rel="stylesheet"  />
-<link href="css/flat-ui.css" rel="stylesheet"  />
+<link href="css/colorbox.css" rel="stylesheet" />
+<link href="css/flat-ui.css" rel="stylesheet" />
 <!--[if lt IE 9]>
       <script src="http://cdn.bootcss.com/html5shiv/3.7.0/html5shiv.min.js"></script>
       <script src="http://cdn.bootcss.com/respond.js/1.3.0/respond.min.js"></script>
@@ -48,59 +48,36 @@
 			</a>
 		</div>
 		<!-- carousel end -->
-	<!-- image start-->
-	<div class="row">
-		<h3>Gallery</h3>
-	</div>
-	<div class="row">
-		<c:forEach var="resource" items="${imageList}">
-			        <div class="col-lg-3">
-				        <div class="thumbnail">
-				          <img  src="${resource.resourcename}" width="300" height="300"  data-src="${resource.resourcename}" >
-				          <p>${resource.description}</p>
-				          <a href="${pageContext.request.contextPath}/praise.do?id=${resource.id}"><p><i class="glyphicon glyphicon-thumbs-up"></i></a>:${resource.praise}</p>
-				          
-				        </div>
-			        </div>
-		</c:forEach>		
-	</div>
-	<!-- image end -->
-	<!-- video start -->
-	<div class="row">
-		<h3>video</h3>
-	</div>
-	<div class="row">
-		<div class="col-lg-3">
-			<video class="video-js" controls
-              preload="auto" poster="../mages/video/poster.jpg" data-setup="{}">
-              <source src="http://sc.chinaz.com/yeshou.mp4" type='video/mp4'/>
-              <source src="http://sc.chinaz.com/oceans-clip.webm" type='video/webm'/>
-            </video>
+		<!-- image start-->
+		<div class="row">
+			<h3>Gallery</h3>
 		</div>
-		<div class="col-lg-3">
-			<video class="video-js" controls
-              preload="auto" poster="../mages/video/poster.jpg" data-setup="{}">
-              <source src="http://sc.chinaz.com/yeshou.mp4" type='video/mp4'/>
-              <source src="http://sc.chinaz.com/oceans-clip.webm" type='video/webm'/>
-            </video>
+		<div class="row">
+			<c:forEach var="resource" items="${imageList}">
+				<div class="col-lg-3">
+					<div class="thumbnail">
+						<img src="${resource.resourcename}" width="300" height="300" data-src="${resource.resourcename}">
+						<p>${resource.description}</p>
+						<a href="${pageContext.request.contextPath}/praise.do?id=${resource.id}"><p>
+								<i class="glyphicon glyphicon-thumbs-up"></i></a>:${resource.praise}
+						</p>
+					</div>
+				</div>
+			</c:forEach>
 		</div>
-		<div class="col-lg-3">
-			<video class="video-js" controls
-              preload="auto" poster="../mages/video/poster.jpg" data-setup="{}">
-              <source src="http://sc.chinaz.com/yeshou.mp4" type='video/mp4'/>
-              <source src="http://sc.chinaz.com/oceans-clip.webm" type='video/webm'/>
-            </video>
+		<!-- image end -->
+		<!-- video start -->
+		<div class="row">
+			<h3>video</h3>
 		</div>
-		<div class="col-lg-3">
-			<video class="video-js" controls
-              preload="auto" poster="../mages/video/poster.jpg" data-setup="{}">
-              <source src="http://sc.chinaz.com/yeshou.mp4" type='video/mp4'/>
-              <source src="http://sc.chinaz.com/oceans-clip.webm" type='video/webm'/>
-            </video>
+		<div class="row">
+			<div class="col-lg-3">
+				<video class="video-js" controls preload="auto" poster="../mages/video/poster.jpg" data-setup="{}">
+					<source src="a.ogg" type='a.ogg' />
+				</video>
+			</div>
 		</div>
-		
-	</div>
-	<!-- video end -->
+		<!-- video end -->
 	</div>
 	<div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="loginlabel" aria-hidden="true">
 		<div class="modal-dialog">
